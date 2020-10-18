@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body style="background-color: white;">
+    <div class="container">
+        <form action="{{ url_for('predict')}}" method="post">
+            <center><h2 class="m-3">Car Price Prediction</h2></center>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="first">Year</label>
+                        <input id="first" name="Year" type="number" placeholder="Example: 2014" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="second">What is the Showroom Price?(In lakhs)</label>
+                        <input id="second" name="Present_Price" required="required" placeholder="Example: 5" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="third">How Many Kilometers Drived?</label>
+                        <input id="third" name="Kms_Driven" required="required" placeholder="Example: 1000" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fourth">How much owners previously had the car(0 or 1 or 3) ?</label>
+                        <input id="fourth" name="Owner" required="required" placeholder="Example: 1" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fuel" class="select">What Is the Fuel type?</label>
+                        <select name="Fuel_Type_Petrol" id="fuel" required="required" class="form-control">
+                            <option value="Petrol">Petrol</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="CNG">CNG</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="resea" class="select">Are you A Dealer or Individual</label>
+                        <select name="Seller_Type_Individual" id="resea" required="required" class="form-control">
+                            <option value="Dealer">Dealer</option>
+                            <option value="Individual">Individual</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="research" class="select">Transmission type</label>
+                        <select name="Transmission_Mannual" id="research" required="required" class="form-control inline">
+                            <option value="Mannual">Manual Car</option>
+                            <option value="Automatic">Automatic Car</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <center><button id="sub" type="submit" class="btn btn-primary">Calculate Price</button></center>
+            <br>
+        </div>
+        </form>
+        <br><br>
+        <center><h3>{{ prediction_text }}<h3></h3></center>
+    </div>
+</body>
+</html>
